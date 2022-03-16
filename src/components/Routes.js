@@ -7,7 +7,7 @@ const NavRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route axact path="/">
+        <Route axact path="/" element={<Results />}>
           {/* <Navigate to="/search" /> */}
         </Route>
         <Route axact path="/search" element={<Results />}></Route>
