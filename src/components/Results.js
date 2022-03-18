@@ -4,19 +4,36 @@ import ReactPlayer from "react-player";
 
 import { useResultContext } from "../Context/ResultsContextProvider";
 
+const localState = JSON.parse(localStorage.getItem("searchRes"));
+
 const Results = () => {
   const { results, isLoading, getResults, searchItem } = useResultContext();
   const location = useLocation();
 
-  useEffect(() => {
-    // getResults("/search/q=Javascript&num=30");
-  }, []);
+  // useEffect(() => {
+  //   getResults("/search/q=sport&num=30");
+  // }, []);
 
   if (isLoading) return "Loading";
 
   switch (location.pathname) {
     case "/search":
-      return "Search";
+      return (
+        <div>
+          {localState && (
+            <div>
+              {localState.results.map(({ title, link }, index) => (
+                <div key={index}>
+                  <a href={link} target="_blank" rel="noreferrer">
+                    <p>{link.length > 30 ? link.substring(0, 30) : link}</p>
+                  </a>
+                  <p>{title}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
     case "/images":
       return "Images";
     case "/news":
