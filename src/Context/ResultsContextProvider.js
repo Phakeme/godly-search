@@ -15,14 +15,15 @@ export const ResultsContextProvider = ({ children }) => {
       headers: {
         "x-user-agent": "desktop",
         "x-proxy-location": "EU",
-        "x-rapidapi-host": "",
-        "x-rapidapi-key": "",
+        "x-rapidapi-host": "google-search3.p.rapidapi.com",
+        "x-rapidapi-key": process.env.REACT_APP_API_KEY,
       },
     });
     const data = await response.json();
     console.log(data, "DATA");
     setResults(data);
     setIsLoading(false);
+    localStorage.setItem("searchRes", JSON.stringify(data));
   };
   return (
     <ResultContext.Provider
