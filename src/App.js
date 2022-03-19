@@ -1,15 +1,19 @@
-import Navbar from "./components/Navbar";
-import Routes from "./components/Routes.js";
-// import Footer from "./components/Navbar";
-import Container from "@mui/material/Container";
+import Container from "@material-ui/core/Container";
+import { HomeContainer } from "./Containers/HomeContainer";
+import { Routes, Route } from "react-router-dom";
+// import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Container maxWidth="md">
-      <Navbar></Navbar>
-      <Routes></Routes>
+    <>
+      <Container maxWidth="lg">
+        <Routes>
+          <Route axact path="/" element={<HomeContainer />}></Route>
+          {/* <Route axact path="/images" element={<Images />}></Route> */}
+        </Routes>
+      </Container>
       {/* <Footer></Footer> */}
-    </Container>
+    </>
   );
 }
 
