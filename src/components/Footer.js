@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Container from "@material-ui/core/Container";
 
 const Footer = () => {
   return (
