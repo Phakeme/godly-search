@@ -4,28 +4,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { ResultsContextProvider } from "./Context/ResultsContextProvider";
-import createTheme from "@material-ui/core/styles/createTheme";
-import { ThemeProvider } from "@material-ui/core/styles";
 
 import reportWebVitals from "./reportWebVitals";
 
-const theme = createTheme({
-  palette: {
-    phakeme: {
-      main: "#blue",
-    },
-  },
-});
-
 ReactDOM.render(
   <ResultsContextProvider>
-    <ThemeProvider theme={theme}>
-      <React.StrictMode>
-        <Router>
-          <App />
-        </Router>
-      </React.StrictMode>
-    </ThemeProvider>
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>
   </ResultsContextProvider>,
   document.getElementById("root")
 );
