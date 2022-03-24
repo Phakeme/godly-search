@@ -5,14 +5,7 @@ import Footer from "../components/Footer";
 
 export const HomeContainer = () => {
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
+    <div>
       <Navbar />
       <Home />
       <Footer />
