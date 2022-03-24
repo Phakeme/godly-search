@@ -1,22 +1,16 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
-
 export default function ButtonAppBar() {
   return (
-    <Box>
-      <AppBar position="static" elevation={0}>
-        <Toolbar
-          style={{
-            display: "flex",
-            justifyContent: "right",
-          }}
-        >
-          Login
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "right",
+        }}
+      >
+        Login
+      </div>
+    </div>
   );
 }
 
