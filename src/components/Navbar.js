@@ -1,21 +1,30 @@
 import React from "react";
-export default function ButtonAppBar() {
+import { Link } from "react-router-dom";
+export default function AppBar() {
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "right",
-        }}
-      >
-        Login
-      </div>
-    </div>
+    <header>
+      <nav>
+        <ul className="flex items-center justify-end h-12">
+          <li className="ml-2 pl-4">
+            <Link to="/">Gmail</Link>
+          </li>
+          <li className="ml-2 pl-4">
+            <Link to="/">Images</Link>
+          </li>
+          <li className="ml-2 pl-4">
+            <Link to="/">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                Sign in
+              </button>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
 // import React from "react";
-// import { Link } from "react-router-dom";
 
 // const Navbar = () => {
 //   return (
