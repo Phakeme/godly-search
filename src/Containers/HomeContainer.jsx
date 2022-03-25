@@ -5,10 +5,18 @@ import Footer from "../components/Footer";
 
 export const HomeContainer = () => {
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Footer />
+    <div className="container mx-auto h-screen bg-gray-500">
+      <div className="flex flex-col">
+        <div className="flex-none">
+          <Navbar />
+        </div>
+        <div className="grow">
+          <Home />
+        </div>
+        <div className="flex-none">
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };
