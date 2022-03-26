@@ -1,27 +1,39 @@
 import React from "react";
 import Logo from "../images/Google-Logo.wine.svg";
+import { Link } from "react-router-dom";
+import SearchForm from "./util/SearchForm";
 
 const Home = () => {
   return (
     <div className="flex justify-center items-center h-full">
-      <div className="bg-red-100 w-full">
+      <div className="w-full">
         <div className="flex justify-center">
           <img width="272px" src={Logo} alt="" />
         </div>
-        <div className="p-8">
-          <div>
-            <input
-              placeholder="Search…"
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
+        <SearchForm />
+        <div>
+          <div className="flex justify-center">
+            <div className="mx-2">
+              <Link to="/">
+                <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
+                  Poogle Search
+                </button>
+              </Link>
+            </div>
+            <div className="mx-2">
+              <Link to="/">
+                <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
+                  I feel lucky
+                </button>
+              </Link>
+            </div>
           </div>
-          <div>Feeling lucky</div>
-          <div>Lan links</div>
-          <h1 className="text-3xl font-bold underline">Hello world!</h1>
+          <div className="text-sm text-center mt-8">
+            Did you know Poogle is not offered in:{" "}
+            <strong>
+              Afrikaans Sesotho isiZulu IsiXhosa Setswana Northern Sotho
+            </strong>
+          </div>
         </div>
       </div>
     </div>
