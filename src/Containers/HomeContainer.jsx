@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 export const HomeContainer = () => {
   return (
-    <div className="container mx-auto h-screen">
+    <div className="h-screen">
       <div className="flex flex-col h-screen">
         <div className="">
           <Navbar />
@@ -13,9 +13,7 @@ export const HomeContainer = () => {
         <div className="grow">
           <Home />
         </div>
-        <div className="bg-yellow-500 item-end">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </div>
   );
