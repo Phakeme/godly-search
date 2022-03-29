@@ -10,9 +10,10 @@ const Results = () => {
   const { results, isLoading, getResults, searchItem } = useResultContext();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   getResults("/search/q=sport&num=30");
-  // }, []);
+  useEffect(() => {
+    // getResults(`/search/q=${searchItem}&num=30`);
+    console.log(`/search/q=${searchItem}&num=30`);
+  }, []);
 
   if (isLoading) return "Loading";
 
