@@ -21,6 +21,7 @@ const Results = () => {
     case "/search":
       return (
         <div>
+          <p>search</p>
           {localState && (
             <div>
               {localState.results.map(({ title, link }, index) => (
@@ -36,13 +37,29 @@ const Results = () => {
         </div>
       );
     case "/images":
-      return "Images";
+      return (
+        <div>
+          <p>images</p>
+        </div>
+      );
     case "/news":
-      return "News";
+      return (
+        <div>
+          <p>news</p>
+        </div>
+      );
     case "/videos":
-      return "Videos";
+      return (
+        <div>
+          <p>videos</p>
+        </div>
+      );
     default:
-      return "Error";
+      return (
+        <div>
+          <p>Error</p>
+        </div>
+      );
   }
 };
 
