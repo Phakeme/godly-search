@@ -1,12 +1,13 @@
 import React from "react";
-// import Home from "../components/Home";
-// import Navbar from "../components/Navbar";
+import Results from "../components/Results";
+import Navbar from "../components/NavbarResults";
 import Footer from "../components/Footer";
 
 export const ResultsContainer = () => {
   return (
     <div className="">
-      <span>Results</span>
+      <Navbar />
+      <Results />
       <Footer></Footer>
     </div>
   );
