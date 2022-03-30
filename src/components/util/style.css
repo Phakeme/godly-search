@@ -7,7 +7,8 @@
   box-shadow: none;
   border-radius: 24px;
   width: 638px;
-  margin: 50px auto;
+  margin: auto;
+  /* margin: 50px auto; */
   max-width: 584px;
   padding: 0 10px;
 }
