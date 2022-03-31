@@ -13,7 +13,7 @@ const Results = () => {
   useEffect(() => {
     // getResults(`/search/q=${searchItem}&num=30`);
     console.log(`/search/q=${searchItem}&num=30`);
-  }, []);
+  }, [location.pathname]);
 
   if (isLoading) return "Loading";
 
@@ -21,7 +21,7 @@ const Results = () => {
     case "/search":
       return (
         <div>
-          <p>search</p>
+          <p>search = {searchItem}</p>
           {localState && (
             <div>
               {localState.results.map(({ title, link }, index) => (
