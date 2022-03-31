@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../images/Google-Logo.wine.svg";
 import SearchForm from "./util/SearchForm";
 import { Links } from "./Links";
+import { CustomContainer } from "./util/CustomContainer";
 
 export default function AppBar() {
   return (
@@ -37,9 +38,9 @@ export default function AppBar() {
         </nav>
       </header>
       <div className="flex items-center border-b-2">
-        <div className="md:container md:mx-auto">
+        <CustomContainer>
           <Links></Links>
-        </div>
+        </CustomContainer>
       </div>
     </>
   );
