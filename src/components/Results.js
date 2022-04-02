@@ -7,12 +7,12 @@ import { useResultContext } from "../Context/ResultsContextProvider";
 const localState = JSON.parse(localStorage.getItem("searchRes"));
 
 const Results = () => {
-  const { results, isLoading, getResults, searchItem } = useResultContext();
+  const { results, isLoading, getResults, searchTerm } = useResultContext();
   const location = useLocation();
 
   useEffect(() => {
     // getResults(`/search/q=${searchItem}&num=30`);
-    console.log(`/search/q=${searchItem}&num=30`);
+    console.log(`/search/q=${searchTerm}&num=30`);
   }, [location.pathname]);
 
   if (isLoading) return "Loading";
@@ -21,7 +21,7 @@ const Results = () => {
     case "/search":
       return (
         <div>
-          <p>search = {searchItem}</p>
+          <p>search = {searchTerm}</p>
           {localState && (
             <div>
               {localState.results.map(({ title, link }, index) => (
