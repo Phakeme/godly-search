@@ -3,45 +3,41 @@ import { Link } from "react-router-dom";
 import Logo from "../images/Google-Logo.wine.svg";
 import SearchForm from "./util/SearchForm";
 import { Links } from "./Links";
+import { EachLink } from "./Navigations/EachLink";
 import { CustomContainer } from "./util/CustomContainer";
 
 export default function AppBar() {
+  const info = [
+    { label: "Setting", path: "/", btn: false },
+    { label: "Google Apps", path: "/", btn: false },
+    { label: " Profile Icon", path: "/", btn: true },
+  ];
   return (
-    <>
+    <div>
       <header className="container mx-auto mt-2">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center h-full">
-            <div className="flex justify-center mr-12">
-              <Link to="/">
-                <img width="92px" src={Logo} alt="" />
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <SearchForm />
-            </div>
+          <div className="flex items-center h-full mr-12 min-w-fit">
+            <Link to="/">
+              <img width="92px" src={Logo} alt="" />
+            </Link>
           </div>
-          <ul className="flex items-center justify-end h-12">
-            <li className="ml-2 pl-4 text-sm">
-              <Link to="/">Setting</Link>
-            </li>
-            <li className="ml-2 pl-4 text-sm">
-              <Link to="/">Google Apps</Link>
-            </li>
-            <li className="ml-2 pl-4 text-sm">
-              <Link to="/">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                  Profile Icon
-                </button>
-              </Link>
-            </li>
+          <div className="flex items-center w-full ">
+            <SearchForm />
+          </div>
+          <ul className="flex items-center justify-end h-12 min-w-fit">
+            {info.map(({ btn, label, path }, index) => (
+              <li className="ml-2 pl-4 text-sm" key={index}>
+                <EachLink btn={btn} path={path} label={label} />
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
       <div className="flex items-center border-b-2">
         <CustomContainer>
-          <Links></Links>
+          <Links />
         </CustomContainer>
       </div>
-    </>
+    </div>
   );
 }
