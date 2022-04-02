@@ -6,9 +6,8 @@
   border: 1px solid #dfe1e5;
   box-shadow: none;
   border-radius: 24px;
-  width: 100%;
-  margin: auto;
-  /* margin: 50px auto; */
+  width: 70%;
+  max-width: 584px;
   padding: 0 10px;
 }
 
