@@ -16,7 +16,7 @@ const Home = () => {
         <div className="flex justify-center">
           <img width="272px" src={Logo} alt="" />
         </div>
-        <div className="my-12 flex justify-center">
+        <div className="my-12 flex justify-center max-w-xl mx-auto">
           <SearchForm />
         </div>
         <div>
