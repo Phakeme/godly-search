@@ -6,8 +6,7 @@
   border: 1px solid #dfe1e5;
   box-shadow: none;
   border-radius: 24px;
-  width: 70%;
-  max-width: 584px;
+  width: 100%;
   padding: 0 10px;
 }
 
@@ -15,9 +14,9 @@
   width: 90%;
   height: 100%;
   margin: auto;
+  background: transparent;
 }
 
-.custom-container {
-  width: 1000px;
-  margin: auto;
+.search-box:focus-within {
+  background: rgb(243, 243, 243);
 }
