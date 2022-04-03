@@ -13,7 +13,7 @@ export default function AppBar() {
     { label: " Profile Icon", path: "/", btn: true },
   ];
   return (
-    <div>
+    <div className="sticky top-0 bg-white">
       <header className="container mx-auto mt-2">
         <nav className="flex items-center justify-between">
           <div className="flex items-center h-full mr-12 min-w-fit">
@@ -21,10 +21,12 @@ export default function AppBar() {
               <img width="92px" src={Logo} alt="" />
             </Link>
           </div>
-          <div className="flex items-center w-full ">
-            <SearchForm />
+          <div className="flex items-center w-full">
+            <div className="max-w-xl w-full">
+              <SearchForm />
+            </div>
           </div>
-          <ul className="flex items-center justify-end h-12 min-w-fit">
+          <ul className="flex items-center justify-end h-12 min-w-fit hidden lg:flex">
             {info.map(({ btn, label, path }, index) => (
               <li className="ml-2 pl-4 text-sm" key={index}>
                 <EachLink btn={btn} path={path} label={label} />
