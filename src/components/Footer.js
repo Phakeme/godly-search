@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="min-h-min bg-gray-200 item-end">
       <div className="container mx-auto ">
-        <div className="my-3">
+        <div className="py-3">
           <h3 className="text-sm">
             Poogle Search by{" "}
             <a
