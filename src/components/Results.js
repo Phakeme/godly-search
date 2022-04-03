@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Loading } from "./util/Loading";
 import ReactPlayer from "react-player";
 
 import { useResultContext } from "../Context/ResultsContextProvider";
@@ -11,25 +12,36 @@ const Results = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // getResults(`/search/q=${searchItem}&num=30`);
+    // getResults(`/search/q=${searchTerm}&num=30`);
     console.log(`/search/q=${searchTerm}&num=30`);
   }, [location.pathname]);
 
-  if (isLoading) return "Loading";
+  if (isLoading) return <Loading />;
 
   switch (location.pathname) {
     case "/search":
       return (
         <div>
-          <p>search = {searchTerm}</p>
+          <p className="text-base mb-2 mt-2 text-gray-500">
+            About {localState.results.length} results {searchTerm}
+          </p>
           {localState && (
             <div>
-              {localState.results.map(({ title, link }, index) => (
-                <div key={index}>
+              {localState.results.map(({ title, link, description }, index) => (
+                <div key={index} className="mb-4">
                   <a href={link} target="_blank" rel="noreferrer">
-                    <p>{link.length > 30 ? link.substring(0, 30) : link}</p>
+                    <p className="text-sm">
+                      {link.length > 30 ? link.substring(0, 30) : link}
+                    </p>
+                    <p className="text-2xl text-blue-500 hover:underline">
+                      {title}
+                    </p>
                   </a>
-                  <p>{title}</p>
+                  <p>
+                    {description.length > 30
+                      ? description.substring(0, 80) + "..."
+                      : description}
+                  </p>
                 </div>
               ))}
             </div>
