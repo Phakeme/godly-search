@@ -7,10 +7,8 @@ import { CustomContainer } from "../components/util/CustomContainer";
 export const ResultsContainer = () => {
   return (
     <div className="h-screen">
-      <div className="flex flex-col h-screen">
-        <div className="">
-          <Navbar />
-        </div>
+      <div className="flex flex-col h-screen ">
+        <Navbar />
         <div className="grow">
           <CustomContainer>
             <Results />
