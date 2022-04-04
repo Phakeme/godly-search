@@ -21,54 +21,56 @@ const Results = () => {
   switch (location.pathname) {
     case "/search":
       return (
-        <div>
+        <div className="mt-28">
           <p className="text-base mb-2 mt-2 text-gray-500">
-            About {localState.results.length} results {searchTerm}
+            About {localState?.results?.length} results {searchTerm}
           </p>
           {localState && (
             <div>
-              {localState.results.map(({ title, link, description }, index) => (
-                <div key={index} className="mb-4">
-                  <a href={link} target="_blank" rel="noreferrer">
-                    <p className="text-sm">
-                      {link.length > 30 ? link.substring(0, 30) : link}
+              {localState?.results?.map(
+                ({ title, link, description }, index) => (
+                  <div key={index} className="mb-4">
+                    <a href={link} target="_blank" rel="noreferrer">
+                      <p className="text-sm">
+                        {link.length > 30 ? link.substring(0, 30) : link}
+                      </p>
+                      <p className="text-2xl text-blue-500 hover:underline">
+                        {title}
+                      </p>
+                    </a>
+                    <p>
+                      {description.length > 30
+                        ? description.substring(0, 80) + "..."
+                        : description}
                     </p>
-                    <p className="text-2xl text-blue-500 hover:underline">
-                      {title}
-                    </p>
-                  </a>
-                  <p>
-                    {description.length > 30
-                      ? description.substring(0, 80) + "..."
-                      : description}
-                  </p>
-                </div>
-              ))}
+                  </div>
+                )
+              )}
             </div>
           )}
         </div>
       );
     case "/images":
       return (
-        <div>
+        <div className="mt-28 flex flex-wrap justify-center">
           <p>images</p>
         </div>
       );
     case "/news":
       return (
-        <div>
+        <div className="mt-28">
           <p>news</p>
         </div>
       );
     case "/videos":
       return (
-        <div>
+        <div className="mt-28">
           <p>videos</p>
         </div>
       );
     default:
       return (
-        <div>
+        <div className="mt-28">
           <p>Error</p>
         </div>
       );
