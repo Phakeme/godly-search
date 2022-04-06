@@ -13,7 +13,7 @@ export default function AppBar() {
     { label: " Profile Icon", path: "/", btn: true },
   ];
   return (
-    <div className="fixed top-0 bg-white w-full">
+    <div className="bg-white w-full">
       <header className="container mx-auto mt-2">
         <nav className="flex items-center justify-between">
           <div className="flex items-center h-full mr-12 min-w-fit">
