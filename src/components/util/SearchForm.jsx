@@ -13,7 +13,7 @@ const SearchForm = () => {
   const [searchText] = useDebounce(query, 500);
 
   useEffect(() => {
-    if (searchText) setSearchTerm(searchText.trim());
+    setSearchTerm(searchText.trim());
   }, [searchText]);
 
   const handleNavige = () => {
