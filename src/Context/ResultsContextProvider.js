@@ -8,6 +8,8 @@ export const ResultsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  let localKey;
+
   const getResults = async (type) => {
     setIsLoading(true);
     const response = await fetch(`${baseURL}${type}`, {
@@ -23,7 +25,23 @@ export const ResultsContextProvider = ({ children }) => {
     console.log(data, "DATA");
     setResults(data);
     setIsLoading(false);
-    localStorage.setItem("searchRes", JSON.stringify(data));
+
+    switch (window.location.pathname) {
+      case "/search":
+        localKey = "searchRes";
+        break;
+      case "/image":
+        localKey = "imagesRes";
+        break;
+      case "/news":
+        localKey = "newsRes";
+        break;
+
+      default:
+        localKey = "videosRes";
+        break;
+    }
+    localStorage.setItem(localKey, JSON.stringify(data));
   };
   return (
     <ResultContext.Provider
