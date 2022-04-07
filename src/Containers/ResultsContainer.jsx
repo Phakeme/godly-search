@@ -9,10 +9,8 @@ export const ResultsContainer = () => {
     <div className="h-screen">
       <div className="flex flex-col h-screen ">
         <Navbar />
-        <div className="grow">
-          <CustomContainer>
-            <Results />
-          </CustomContainer>
+        <div className="grow container mx-auto pl-0 xl:pl-36">
+          <Results />
         </div>
         <Footer />
       </div>
