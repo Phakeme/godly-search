@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const ResultContext = createContext();
 const baseURL = "https://google-search3.p.rapidapi.com/api/v1";
+// https://google-search3.p.rapidapi.com/api/v1/video/
 
 export const ResultsContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
@@ -16,7 +17,7 @@ export const ResultsContextProvider = ({ children }) => {
       method: "GET",
       headers: {
         "x-user-agent": "desktop",
-        "x-proxy-location": "EU",
+        "x-proxy-location": "US",
         "x-rapidapi-host": "google-search3.p.rapidapi.com",
         "x-rapidapi-key": process.env.REACT_APP_API_KEY,
       },
