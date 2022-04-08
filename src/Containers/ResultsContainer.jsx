@@ -9,7 +9,7 @@ export const ResultsContainer = () => {
     <div className="h-screen">
       <div className="flex flex-col h-screen ">
         <Navbar />
-        <div className="grow container mx-auto pl-0 xl:pl-36">
+        <div className="grow container mx-auto  xl:pl-36 px-8">
           <Results />
         </div>
         <Footer />
