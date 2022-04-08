@@ -14,9 +14,9 @@ export default function AppBar() {
   ];
   return (
     <div className="bg-white w-full">
-      <header className="container mx-auto mt-2">
+      <header className="container mx-auto mt-2 px-8">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center h-full mr-12 min-w-fit">
+          <div className="flex items-center h-full mr-4 md:mr-12 min-w-fit">
             <Link to="/">
               <img width="92px" src={Logo} alt="" />
             </Link>
