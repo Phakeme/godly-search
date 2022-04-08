@@ -9,7 +9,7 @@ export default function AppBar() {
   ];
 
   return (
-    <header className="container mx-auto ">
+    <header className="container mx-auto">
       <nav className="w-full">
         <ul className="flex items-center lg:justify-end  justify-center h-12">
           {info.map(({ btn, label, path }, index) => (
