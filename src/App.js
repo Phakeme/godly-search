@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route axact path="/" element={<HomeContainer />}></Route>
         <Route axact path="/search" element={<ResultsContainer />}></Route>
-        <Route axact path="/images" element={<ResultsContainer />}></Route>
+        <Route axact path="/image" element={<ResultsContainer />}></Route>
         <Route axact path="/videos" element={<ResultsContainer />}></Route>
         <Route axact path="/news" element={<ResultsContainer />}></Route>
         <Route path="*" element={<HomeContainer />}></Route>
