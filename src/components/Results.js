@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Loading } from "./util/Loading";
 import ReactPlayer from "react-player";
+import ReactPaginate from "react-paginate";
 
 import { useResultContext } from "../Context/ResultsContextProvider";
 
@@ -37,7 +38,7 @@ const Results = () => {
             About {localState?.results?.length} results {searchTerm}
           </p>
           {localState && (
-            <div>
+            <div className="">
               {localState?.results?.map(
                 ({ title, link, description }, index) => (
                   <div key={index} className="mb-4">
