@@ -2,5 +2,5 @@ import React from "react";
 import "./style.css";
 
 export const CustomContainer = ({ children }) => {
-  return <div className="container mx-auto pl-0 xl:pl-36">{children}</div>;
+  return <div className="container mx-auto xl:pl-36 px-8">{children}</div>;
 };
