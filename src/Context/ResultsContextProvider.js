@@ -1,15 +1,16 @@
 import React, { createContext, useContext, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const ResultContext = createContext();
 const baseURL = "https://google-search3.p.rapidapi.com/api/v1";
-// https://google-search3.p.rapidapi.com/api/v1/video/
 
 export const ResultsContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isServerError, setIsServerError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   let localKey;
+  let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
 
   const getResults = async (type) => {
     setIsLoading(true);
@@ -23,11 +24,26 @@ export const ResultsContextProvider = ({ children }) => {
       },
     });
     const data = await response.json();
-    console.log(data, "DATA");
-    setResults(data);
+    data.resFor = searchTerm || seachTermLocal;
+    if (data.message) {
+      setIsServerError(true);
+    } else {
+      setResults(data);
+      console.log(data, "Sucess DATA");
+      console.log(data.resFor, "data.resFor");
+      if (window.location.pathname === "/") {
+        window.location.pathname = "/search";
+      } else {
+        window.location.reload();
+      }
+    }
     setIsLoading(false);
 
     switch (window.location.pathname) {
+      case "/":
+        await data;
+        localKey = "searchRes";
+        break;
       case "/search":
         localKey = "searchRes";
         break;
@@ -46,7 +62,14 @@ export const ResultsContextProvider = ({ children }) => {
   };
   return (
     <ResultContext.Provider
-      value={{ getResults, results, searchTerm, setSearchTerm, isLoading }}
+      value={{
+        getResults,
+        results,
+        searchTerm,
+        setSearchTerm,
+        isLoading,
+        isServerError,
+      }}
     >
       {children}
     </ResultContext.Provider>
