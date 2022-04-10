@@ -3,9 +3,6 @@ import React from "react";
 export const SearchResults = ({ localState, searchTerm }) => {
   return (
     <div className="">
-      <p className="text-base mb-2 mt-2 text-gray-500">
-        About {localState?.results?.length} results {searchTerm}
-      </p>
       {localState && (
         <div className="">
           {localState?.results?.map(({ title, link, description }, index) => (
