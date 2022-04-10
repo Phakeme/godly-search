@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { Loading } from "./util/Loading";
-
 import { useResultContext } from "../Context/ResultsContextProvider";
 import { SearchResults } from "./Pages/SearchResults";
 import { ImagesResults } from "./Pages/ImagesResults";
@@ -11,29 +10,24 @@ import { VideosResults } from "./Pages/VideosResults";
 let localState;
 
 const Results = () => {
-  const { results, isLoading, getResults, searchTerm } = useResultContext();
+  const { isLoading, searchTerm } = useResultContext();
   const location = useLocation();
 
-  useEffect(() => {
-    if (searchTerm.trim()) {
-      if (location.pathname === "/videos") {
-        console.log(`videos`);
-        // getResults(`/video/q=${searchTerm} @youtube`);
-      } else {
-        // getResults(`${location.pathname}/q=${searchTerm}&num=40`);
-        console.log(`${location.pathname}/q=${searchTerm}&num=40`);
-      }
-      // getResults(`/search/q=${searchTerm}&num=30`);
-    }
-    console.log("Just running");
-  }, [location.pathname, searchTerm]);
+  let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
 
   if (isLoading) return <Loading />;
 
   switch (location.pathname) {
     case "/search":
       localState = JSON.parse(localStorage.getItem("searchRes"));
-      return <SearchResults localState={localState} searchTerm={searchTerm} />;
+      return (
+        <>
+          <p className="text-base mb-2 mt-2 text-gray-500">
+            About {localState?.results?.length} results {seachTermLocal}
+          </p>
+          <SearchResults localState={localState} searchTerm={searchTerm} />
+        </>
+      );
     case "/image":
       localState = JSON.parse(localStorage.getItem("imagesRes"));
       return <ImagesResults localState={localState} searchTerm={searchTerm} />;
