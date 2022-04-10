@@ -3,8 +3,8 @@ import { Oval } from "react-loader-spinner";
 
 export const Loading = () => {
   return (
-    <div className="flex justify-center items-center h-full">
-      <div className="flex justify-center items-center lg:-ml-36 ml-0">
+    <div className="flex justify-center items-center h-full ">
+      <div className="flex justify-center items-center">
         <Oval
           ariaLabel="loading-indicator"
           height={50}
