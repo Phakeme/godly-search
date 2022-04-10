@@ -1,28 +1,68 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import { useLocation } from "react-router-dom";
+import { useResultContext } from "../../Context/ResultsContextProvider";
 import Isearch from "../../images/icons8-search.svg";
 import Ispeak from "../../images/Google_mic.svg";
-import { useResultContext } from "../../Context/ResultsContextProvider";
 import { useDebounce } from "use-debounce";
-import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
+  const { getResults, searchTerm, setSearchTerm } = useResultContext();
   const [query, setQuery] = useState("");
-  const { setSearchTerm } = useResultContext();
   const [searchText] = useDebounce(query, 500);
+
+  let localState;
+  let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
+
+  switch (location.pathname) {
+    case "/search":
+      localState = JSON.parse(localStorage.getItem("searchRes"));
+      break;
+    case "/image":
+      localState = JSON.parse(localStorage.getItem("imagesRes"));
+      break;
+    case "/news":
+      localState = JSON.parse(localStorage.getItem("newsRes"));
+      break;
+    case "/videos":
+      localState = JSON.parse(localStorage.getItem("videosRes"));
+      break;
+    default:
+      break;
+  }
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      if (localState === null || localState?.resFor !== seachTermLocal) {
+        handleSubmit(searchTerm || seachTermLocal);
+      }
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     setSearchTerm(searchText.trim());
   }, [searchText]);
 
-  const handleNavige = () => {
-    navigate(`/search`);
+  const handleSubmit = async (searchText) => {
+    localStorage.setItem("seachTermLocal", JSON.stringify(searchText));
+    setSearchTerm(searchText.trim());
+
+    if (window.location.pathname === "/") {
+      await getResults(`/search/q=${searchText}&num=30`);
+    } else if (location.pathname === "/videos") {
+      getResults(`/video/q=${searchTerm || seachTermLocal} @youtube`);
+    } else {
+      getResults(
+        `${location.pathname}/q=${searchTerm || seachTermLocal}}&num=40`
+      );
+      console.log(`${location.pathname}/q=${searchTerm || seachTermLocal}`);
+    }
   };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      handleNavige("/search");
+      // handleSubmit(searchTerm);
     }
   };
 
@@ -51,6 +91,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-
-// className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-// placeholder="0.00"
