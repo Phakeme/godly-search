@@ -2,19 +2,29 @@ import React from "react";
 import Logo from "../images/Google-Logo.wine.svg";
 import { Link } from "react-router-dom";
 import SearchForm from "./util/SearchForm";
+import { useResultContext } from "../Context/ResultsContextProvider";
+import { Loading } from "../components/util/Loading";
 
 const Home = () => {
+  const { isLoading, isServerError } = useResultContext();
   const data = {
-    btn1: " Poogle Search",
-    btn2: " I feel lucky",
+    btn1: " Godly Search",
+    btn2: " I feel like coding",
     moreInfoLabel: "Did you know Poogle is not offered in:",
     moreInfo: "Afrikaans Sesotho isiZulu IsiXhosa Setswana Northern Sotho",
   };
   return (
     <div className="flex justify-center items-center h-full">
+      {isServerError && <h3>setIsServerError</h3>}
       <div className="w-full">
-        <div className="flex justify-center">
-          <img width="472px" src={Logo} alt="" />
+        <div className="flex justify-center items-center h-40">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <div className="h-full">
+              <img width="360px" src={Logo} alt="" />
+            </div>
+          )}
         </div>
         <div className="my-12 flex justify-center max-w-xl mx-auto">
           <SearchForm />
