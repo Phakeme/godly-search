@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 const ResultContext = createContext();
 const baseURL = "https://google-search3.p.rapidapi.com/api/v1";
 
@@ -8,6 +7,7 @@ export const ResultsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isServerError, setIsServerError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   let localKey;
   let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
@@ -27,6 +27,7 @@ export const ResultsContextProvider = ({ children }) => {
     data.resFor = searchTerm || seachTermLocal;
     if (data.message) {
       setIsServerError(true);
+      setErrorMessage(data.message);
     } else {
       setResults(data);
       console.log(data, "Sucess DATA");
@@ -69,6 +70,8 @@ export const ResultsContextProvider = ({ children }) => {
         setSearchTerm,
         isLoading,
         isServerError,
+        setIsServerError,
+        errorMessage,
       }}
     >
       {children}
