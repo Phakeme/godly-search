@@ -41,22 +41,23 @@ const SearchForm = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    setSearchTerm(searchText.trim());
+    setSearchTerm(searchText?.trim());
   }, [searchText]);
 
   const handleSubmit = async (searchText) => {
+    // console.log(searchText, "searchText");
     localStorage.setItem("seachTermLocal", JSON.stringify(searchText));
-    setSearchTerm(searchText.trim());
+    setSearchTerm(searchText?.trim());
 
     if (window.location.pathname === "/") {
-      await getResults(`/search/q=${searchText}&num=30`);
+      await getResults(`/searc/q=${searchText}&num=30`);
     } else if (location.pathname === "/videos") {
       getResults(`/video/q=${searchTerm || seachTermLocal} @youtube`);
     } else {
       getResults(
         `${location.pathname}/q=${searchTerm || seachTermLocal}}&num=40`
       );
-      console.log(`${location.pathname}/q=${searchTerm || seachTermLocal}`);
+      // console.log(`${location.pathname}/q=${searchTerm || seachTermLocal}`);
     }
   };
 
