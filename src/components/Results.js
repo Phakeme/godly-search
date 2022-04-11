@@ -15,6 +15,10 @@ const Results = () => {
 
   let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
 
+  if (searchTerm.length === 0 && seachTermLocal === null) {
+    window.location.pathname = "/";
+  }
+
   if (isLoading) return <Loading />;
 
   switch (location.pathname) {
