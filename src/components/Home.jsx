@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SearchForm from "./util/SearchForm";
 import { useResultContext } from "../Context/ResultsContextProvider";
 import { Loading } from "../components/util/Loading";
+import { Error } from "./Pages/Error";
 
 const Home = () => {
   const { isLoading, isServerError } = useResultContext();
@@ -15,42 +16,47 @@ const Home = () => {
   };
   return (
     <div className="flex justify-center items-center h-full">
-      {isServerError && <h3>setIsServerError</h3>}
-      <div className="w-full">
-        <div className="flex justify-center items-center h-40">
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <div className="h-full">
-              <img width="360px" src={Logo} alt="" />
+      {isServerError ? (
+        <Error />
+      ) : (
+        <>
+          <div className="w-full">
+            <div className="flex justify-center items-center h-40">
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <div className="h-full">
+                  <img width="360px" src={Logo} alt="" />
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className="my-12 flex justify-center max-w-xl mx-auto">
-          <SearchForm />
-        </div>
-        <div>
-          <div className="flex justify-center">
-            <div className="mx-2">
-              <Link to="/">
-                <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
-                  {data.btn1}
-                </button>
-              </Link>
+            <div className="my-12 flex justify-center max-w-xl mx-auto">
+              <SearchForm />
             </div>
-            <div className="mx-2">
-              <Link to="/">
-                <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
-                  {data.btn2}
-                </button>
-              </Link>
+            <div>
+              <div className="flex justify-center">
+                <div className="mx-2">
+                  <Link to="/">
+                    <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
+                      {data.btn1}
+                    </button>
+                  </Link>
+                </div>
+                <div className="mx-2">
+                  <Link to="/">
+                    <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-4 rounded">
+                      {data.btn2}
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              <div className="text-sm text-center mt-8">
+                {data.moreInfoLabel} <strong>{data.moreInfo}</strong>
+              </div>
             </div>
           </div>
-          <div className="text-sm text-center mt-8">
-            {data.moreInfoLabel} <strong>{data.moreInfo}</strong>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
