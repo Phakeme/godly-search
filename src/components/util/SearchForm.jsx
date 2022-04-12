@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useResultContext } from "../../Context/ResultsContextProvider";
 import Isearch from "../../images/icons8-search.svg";
 import Ispeak from "../../images/Google_mic.svg";
+import ClearIcon from "../../images/x_icon.svg";
 import { useDebounce } from "use-debounce";
 
 const SearchForm = () => {
@@ -46,16 +47,17 @@ const SearchForm = () => {
 
   const handleSubmit = async (searchText) => {
     // console.log(searchText, "searchText");
+    return null;
     localStorage.setItem("seachTermLocal", JSON.stringify(searchText));
     setSearchTerm(searchText?.trim());
 
     if (window.location.pathname === "/") {
-      await getResults(`/searc/q=${searchText}&num=30`);
+      await getResults(`/search/q=${searchText}&num=30`);
     } else if (location.pathname === "/videos") {
       getResults(`/video/q=${searchTerm || seachTermLocal} @youtube`);
     } else {
       getResults(
-        `${location.pathname}/q=${searchTerm || seachTermLocal}}&num=40`
+        `/${location.pathname}/q=${searchTerm || seachTermLocal}}&num=40`
       );
       // console.log(`${location.pathname}/q=${searchTerm || seachTermLocal}`);
     }
@@ -84,9 +86,25 @@ const SearchForm = () => {
         }}
         onKeyPress={handleKeyPress}
       />
+      {query.length ? (
+        <div
+          className="flex justify-center p-3 border-r-2 cursor-pointer"
+          onClick={() => setQuery("")}
+        >
+          <img src={ClearIcon} alt="" />
+        </div>
+      ) : null}
       <div className="flex justify-center p-3">
         <img src={Ispeak} alt="" />
       </div>
+      {query.length ? (
+        <div
+          className="flex justify-center p-3 cursor-pointer"
+          onClick={() => handleSubmit(searchTerm)}
+        >
+          <img src={Isearch} alt="" />
+        </div>
+      ) : null}
     </div>
   );
 };
