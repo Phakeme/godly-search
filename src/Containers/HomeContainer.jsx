@@ -10,7 +10,7 @@ export const HomeContainer = () => {
         <div className="">
           <Navbar />
         </div>
-        <div className="grow">
+        <div className="grow px-4">
           <Home />
         </div>
         <Footer />
