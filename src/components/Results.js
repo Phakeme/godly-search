@@ -6,11 +6,12 @@ import { SearchResults } from "./Pages/SearchResults";
 import { ImagesResults } from "./Pages/ImagesResults";
 import { NewsResults } from "./Pages/NewsResults";
 import { VideosResults } from "./Pages/VideosResults";
+import { Error } from "./Pages/Error";
 
 let localState;
 
 const Results = () => {
-  const { isLoading, searchTerm } = useResultContext();
+  const { isLoading, searchTerm, isServerError } = useResultContext();
   const location = useLocation();
 
   let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
@@ -20,6 +21,12 @@ const Results = () => {
   }
 
   if (isLoading) return <Loading />;
+  if (isServerError)
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Error />
+      </div>
+    );
 
   switch (location.pathname) {
     case "/search":
