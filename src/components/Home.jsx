@@ -25,7 +25,7 @@ const Home = () => {
               {isLoading ? (
                 <Loading />
               ) : (
-                <div className="h-full">
+                <div className="h-full flex flex-col items-center justify-center w-72 md:w-96">
                   <img width="360px" src={Logo} alt="" />
                 </div>
               )}
