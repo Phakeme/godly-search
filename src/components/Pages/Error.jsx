@@ -20,7 +20,7 @@ export const Error = () => {
           "Godly search is using google free api, and we might have reached  our monthly restriction. "}
       </p>
       <div className="bg-red-100" onClick={() => setIsServerError(false)}>
-        <EachLink btn={true} label="Got it, take me back" path="#" />
+        <EachLink btn={true} label="Got it, take me back home" path="/" />
       </div>
     </div>
   );
