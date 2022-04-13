@@ -20,8 +20,11 @@ const Results = () => {
     window.location.pathname = "/";
   }
 
+  const localServerError = JSON.parse(localStorage.getItem("serverError"));
+
   if (isLoading) return <Loading />;
-  if (isServerError)
+
+  if (isServerError || localServerError)
     return (
       <div className="flex items-center justify-center h-full">
         <Error />
