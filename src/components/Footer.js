@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="min-h-min bg-gray-200 item-end">
       <div className="container mx-auto ">
         <div className="py-3">
-          <h3 className="text-sm">
+          <h3 className="text-sm text-center">
             Poogle Search by{" "}
             <a
               href="https://github.com/Phakeme"
