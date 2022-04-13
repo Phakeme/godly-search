@@ -28,6 +28,7 @@ export const ResultsContextProvider = ({ children }) => {
     if (data.message) {
       setIsServerError(true);
       setErrorMessage(data.message);
+      // localStorage.setItem("serverError", JSON.stringify(data.message));
     } else {
       setResults(data);
       console.log(data, "Sucess DATA");
