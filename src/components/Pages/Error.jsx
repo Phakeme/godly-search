@@ -6,8 +6,13 @@ import { useResultContext } from "../../Context/ResultsContextProvider";
 export const Error = () => {
   const { setIsServerError, errorMessage } = useResultContext();
 
+  const clearError = () => {
+    setIsServerError(false);
+    localStorage.removeItem("serverError");
+  };
+
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center my-6">
       <div className="rounded-full flex justify-center items-center w-24 h-auto overflow-hidden mb-6 border-8 border-white shadow-lg">
         <img height="100%" src={SearchIcon} alt="" />
       </div>
@@ -19,7 +24,7 @@ export const Error = () => {
         {errorMessage ||
           "Godly search is using google free api, and we might have reached  our monthly restriction. "}
       </p>
-      <div className="bg-red-100" onClick={() => setIsServerError(false)}>
+      <div className="bg-red-100" onClick={() => clearError()}>
         <EachLink btn={true} label="Got it, take me back home" path="/" />
       </div>
     </div>
