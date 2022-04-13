@@ -46,8 +46,6 @@ const SearchForm = () => {
   }, [searchText]);
 
   const handleSubmit = async (searchText) => {
-    // console.log(searchText, "searchText");
-    return null;
     localStorage.setItem("seachTermLocal", JSON.stringify(searchText));
     setSearchTerm(searchText?.trim());
 
@@ -57,15 +55,14 @@ const SearchForm = () => {
       getResults(`/video/q=${searchTerm || seachTermLocal} @youtube`);
     } else {
       getResults(
-        `/${location.pathname}/q=${searchTerm || seachTermLocal}}&num=40`
+        `${location.pathname}/q=${searchTerm || seachTermLocal}&num=40`
       );
-      // console.log(`${location.pathname}/q=${searchTerm || seachTermLocal}`);
     }
   };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      // handleSubmit(searchTerm);
+      handleSubmit(searchTerm);
     }
   };
 
