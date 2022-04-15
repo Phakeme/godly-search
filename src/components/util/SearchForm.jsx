@@ -68,8 +68,8 @@ const SearchForm = () => {
 
   return (
     <div className="search-box">
-      <div className="flex justify-center p-3">
-        <img src={Isearch} alt="" />
+      <div className="flex justify-center p-2">
+        <img height="100%" width="100%" src={Isearch} alt="" />
       </div>
       <input
         value={query}
@@ -96,10 +96,10 @@ const SearchForm = () => {
       </div>
       {query.length ? (
         <div
-          className="flex justify-center p-3 cursor-pointer"
+          className="flex justify-center p-2 cursor-pointer"
           onClick={() => handleSubmit(searchTerm)}
         >
-          <img src={Isearch} alt="" />
+          <img height="100%" width="100%" src={Isearch} alt="" />
         </div>
       ) : null}
     </div>
