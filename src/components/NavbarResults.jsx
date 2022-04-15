@@ -14,7 +14,7 @@ export default function AppBar() {
   ];
   return (
     <div className="bg-white w-full">
-      <header className="container mx-auto mt-2 px-8">
+      <header className="container mx-auto mt-6 px-8">
         <nav className="flex items-center justify-between">
           <div className="flex items-center h-full mr-4 md:mr-12 min-w-fit">
             <Link to="/">
@@ -35,7 +35,7 @@ export default function AppBar() {
           </ul>
         </nav>
       </header>
-      <div className="flex items-center border-b-2">
+      <div className="flex items-center border-b-2 pt-2">
         <CustomContainer>
           <Links />
         </CustomContainer>
