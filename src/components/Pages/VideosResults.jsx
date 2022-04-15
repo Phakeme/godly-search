@@ -14,31 +14,31 @@ export const VideosResults = ({ localState, searchTerm }) => {
               { additional_links, description, title, cite: { domain } },
               index
             ) => (
-              <div key={index} className="mb-3">
-                <div key={index} className="mt-2">
-                  {domain}
+              <div key={index} className="mb-3 flex flex-col flex-wrap w-full">
+                <div className="mt-2 hidden md:block ">
+                  <p>{domain}</p>
+                  <a href="" className="w-full">
+                    <p className="text md:text-xl text-blue-500 hover:underline mb-2">
+                      {description.length > 60
+                        ? description.substring(0, 60) + "..."
+                        : description}
+                    </p>
+                  </a>
                 </div>
-                <a href="">
-                  <p className="text-2xl text-blue-500 hover:underline mb-2">
-                    {description.length > 60
-                      ? description.substring(0, 60) + "..."
-                      : description}
-                  </p>
-                </a>
-                <div className="flex flecx-row flex-wrap">
-                  <div className="mr-5 mb-2">
+                <div className="flex flex-col md:flex-row ">
+                  <div className="mr-5 mb-0 w-64 md:w-96 h-52 object-contain">
                     <ReactPlayer
                       url={additional_links?.[0]?.href}
                       controls
-                      width="355px"
-                      height="200px"
+                      width="100%"
+                      height="100%"
                     />
                   </div>
-                  <div className="flex flex-col flex-wrap w-96">
+                  <div className="w-full sm:w-64 lg:w-96 break-words">
                     <p className="text-sm my-2">
                       <strong>{title}</strong>
                     </p>
-                    <p className="">{description}</p>
+                    <p className="w-full hidden md:block">{description}</p>
                   </div>
                 </div>
               </div>
@@ -49,13 +49,3 @@ export const VideosResults = ({ localState, searchTerm }) => {
     </div>
   );
 };
-
-{
-  /* <div className="flex flex-wrap ">
-{results?.results?.map((video, index) => (
-  <div key={index} className="p-2">
-    <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />
-  </div>
-))}
-</div> */
-}
