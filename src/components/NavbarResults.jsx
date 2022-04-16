@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../images/Google-Logo.wine.svg";
+import MobileLogo from "../images/google-g-2015-logo-svgrepo-com.svg";
+
 import SearchForm from "./util/SearchForm";
 import { Links } from "./Links";
 import { EachLink } from "./Navigations/EachLink";
@@ -17,8 +19,11 @@ export default function AppBar() {
       <header className="container mx-auto mt-6 px-8">
         <nav className="flex items-center justify-between">
           <div className="flex items-center h-full mr-4 md:mr-12 min-w-fit">
-            <Link to="/">
+            <Link to="/" className="hidden md:block">
               <img width="92px" src={Logo} alt="" />
+            </Link>
+            <Link to="/" className=" md:hidden">
+              <img width="50px" src={MobileLogo} alt="" />
             </Link>
           </div>
           <div className="flex items-center w-full">
