@@ -12,6 +12,12 @@ export const ResultsContextProvider = ({ children }) => {
   let localKey;
   let seachTermLocal = JSON.parse(localStorage.getItem("seachTermLocal"));
 
+  if (!navigator.onLine) {
+    console.log("online");
+    alert("Offline");
+    return;
+  }
+
   const getResults = async (type) => {
     setIsLoading(true);
     const response = await fetch(`${baseURL}${type}`, {
@@ -28,7 +34,7 @@ export const ResultsContextProvider = ({ children }) => {
     if (data.message) {
       setIsServerError(true);
       setErrorMessage(data.message);
-      // localStorage.setItem("serverError", JSON.stringify(data.message));
+      localStorage.setItem("serverError", JSON.stringify(data.message));
     } else {
       setResults(data);
       console.log(data, "Sucess DATA");
